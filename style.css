@@ -1,0 +1,32 @@
+span:nth-last-of-type(5) {
+  border: solid red 1px;
+}
+span:nth-of-type(2),
+span:nth-of-type(8) {
+  border-left: solid red 1px;
+  border-right: solid red 1px;
+}
+span:nth-of-type(4),
+span:nth-of-type(6) {
+  border-bottom: solid red 1px;
+  border-top: solid red 1px;
+}
+span {
+  padding: 0;
+  margin: 0;
+}
+div#game {
+  text-align: center;
+}
+body {
+  font-family: monospace;
+}
+button {
+  color: white;
+  background-color: red;
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 100px;
+  font-family: monospace;
+  height: 50px;
+}
