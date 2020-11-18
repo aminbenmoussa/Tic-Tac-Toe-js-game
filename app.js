@@ -1,5 +1,9 @@
 const Gameboard = {
-    game: [['', '', ''], ['x', 'x', 'x'], ['', '', '']],
+    game: [
+        ['', '', 'o'],
+        ['', 'o', ''],
+        ['o', '', '']],
+    last:[2,0],
     check: function () {
         var last = this.last;
         var game = this.game;
@@ -11,39 +15,38 @@ const Gameboard = {
             return game[y][x];
         }
         var elem = game[last[1]][last[0]];
-        console.log(get_game(last[0],ilast11));
         function increment(num) {
-            return num === 2 ? 0 : num + 1
+            return num === 2 ? 0 : num + 1;
         }
-        if (elem === get_game(ilast01, last[0]) && elem === get_game(ilast02, last[1])) {
+        
+        
+        if (elem === get_game(ilast01,last[1]) && elem === get_game(ilast02,last[1])) {
             return true;
         }
         
-        if (elem == get_game(last[0], ilast11) && elem == get_game(last[0], ilast12)) {
+        if (elem == get_game(last[0],ilast11) && elem == get_game(last[0],ilast12)) {
             return true;
         }
         
-        if (last[0] - last[1] === 1 || last[0] - last[1] === -1) { return false };
         if (last[0] === last[1] && elem === get_game(ilast01, ilast01) && elem === get_game(ilast02, ilast02)) {
-            return true
+            return true;
         }
         if (last[0] + last[1] === 2 && elem === get_game(last[1], last[0]) && elem === get_game(1, 1)) {
             return true;
-        }    
+        }
+        return false;
     },
     update: function () {
-        let answer = this.check();
-        if (answer == 1) {
-            score[0]++;
-            this.reset();
-        } else if (answer == 2) {
-            score[1]++;
-            this.reset();
+        if (this.check()) {
+            this.score[this.play-1]++;
+            this.turn++;
+            this.play = this.play === 1 ? 2 : 1;
+            
         }
     },
-    last:[0,1],
     score: [0, 0],
     turn: 0,
+    play:1,
     reset: function () {
         for (let i = 0; i < game.length; i++){
             for (let j = 0; j < game.length; j++){
@@ -57,4 +60,4 @@ const Gameboard = {
         this.game[posY][posX] = val;
     }
 };
-Gameboard.check();
+console.log(Gameboard.check());
