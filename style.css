@@ -1,8 +1,8 @@
-span:nth-last-of-type(5) {
+div#game > div:nth-last-of-type(5) {
   border: solid red 1px;
 }
-span:nth-of-type(2),
-span:nth-of-type(8) {
+div#game > div:nth-of-type(2),
+div#game > div:nth-of-type(8) {
   border-left: solid red 1px;
   border-right: solid red 1px;
 }
@@ -11,15 +11,13 @@ span:nth-of-type(6) {
   border-bottom: solid red 1px;
   border-top: solid red 1px;
 }
-span {
-  padding: 0;
-  margin: 0;
-}
 div#game {
   text-align: center;
 }
 body {
   font-family: monospace;
+  color: white;
+  background-color: black;
 }
 button {
   color: white;
@@ -29,4 +27,13 @@ button {
   width: 100px;
   font-family: monospace;
   height: 50px;
+}
+div#game > div {
+  display: inline;
+}
+div#game > div:nth-of-type(3),
+div#game > div:nth-of-type(6),
+div#game > div:nth-of-type(9) {
+  color: red;
+  display: block;
 }
