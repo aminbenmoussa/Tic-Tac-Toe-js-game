@@ -10,11 +10,13 @@
 <body>
     <div id="main">
         <div id="score">
-            <h1></h1>
+            <h1>0 - 0</h1>
         </div>
         <button name="reset" onclick="Gameboard.reset()">Reset</button><br>
         <div id="game">
-            <div>--</div><div>--</div><div>--</div><div>--</div><div>--</div><div>--</div><div>--</div><div>--</div><div>--</div>
+            <div class='row'><div class='game' onclick="Gameboard.input(0,0)"></div><div class='game' onclick="Gameboard.input(1,0)"></div><div class='game' onclick="Gameboard.input(2,0)"></div></div>
+            <div class='row'><div class='game' onclick="Gameboard.input(0,1)"></div><div class='game' onclick="Gameboard.input(1,1)"></div><div class='game' onclick="Gameboard.input(2,1)"></div></div>
+            <div class='row'><div class='game' onclick="Gameboard.input(0,2)"></div><div class='game' onclick="Gameboard.input(1,2)"></div><div class='game' onclick="Gameboard.input(2,2)"></div></div>
         </div>
     </div>
     <script src='app.js'></script>

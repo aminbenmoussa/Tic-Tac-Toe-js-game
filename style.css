@@ -1,16 +1,3 @@
-div#game > div:nth-last-of-type(5) {
-  border: solid red 1px;
-}
-div#game > div:nth-of-type(2),
-div#game > div:nth-of-type(8) {
-  border-left: solid red 1px;
-  border-right: solid red 1px;
-}
-span:nth-of-type(4),
-span:nth-of-type(6) {
-  border-bottom: solid red 1px;
-  border-top: solid red 1px;
-}
 div#game {
   text-align: center;
 }
@@ -28,12 +15,40 @@ button {
   font-family: monospace;
   height: 50px;
 }
-div#game > div {
-  display: inline;
+@media screen and (min-width: 601px) {
+  #game {
+    width: 300px;
+    margin: auto;
+  }
+  .game {
+    height: 100px;
+  }
 }
-div#game > div:nth-of-type(3),
-div#game > div:nth-of-type(6),
-div#game > div:nth-of-type(9) {
-  color: red;
-  display: block;
+@media screen and (max-width: 600px) {
+  #game {
+    width: 50%;
+    margin: auto;
+  }
+  .game {
+    height: 50px;
+  }
+}
+
+.row {
+  display: flex;
+}
+.game {
+  display: inline;
+  font-size: 3em;
+  width: 30%;
+  font-size: 100px;
+  font-family: Arial;
+}
+.row:nth-of-type(2) > .game {
+  border-top: solid red 1px;
+  border-bottom: solid red 1px;
+}
+.row > .game:nth-of-type(2) {
+  border-right: solid red 1px;
+  border-left: solid red 1px;
 }

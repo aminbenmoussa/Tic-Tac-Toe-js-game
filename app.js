@@ -1,9 +1,9 @@
 const Gameboard = {
     game: [
-        ['', '', 'o'],
-        ['', 'o', ''],
-        ['o', '', '']],
-    last:[2,0],
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']],
+    last:[false,false],
     check: function () {
         var last = this.last;
         var game = this.game;
@@ -38,26 +38,47 @@ const Gameboard = {
     },
     update: function () {
         if (this.check()) {
-            this.score[this.play-1]++;
+            this.score[this.player - 1]++;
+            document.querySelector("#score > h1").textContent = this.score[0] + " - " + this.score[1];
             this.turn++;
-            this.play = this.play === 1 ? 2 : 1;
-            
+            this.newgame();
+        } else if (this.step === 9) {
+            this.newgame();
         }
     },
     score: [0, 0],
     turn: 0,
-    play:1,
+    player: 1,
+    step:0,
     reset: function () {
-        for (let i = 0; i < game.length; i++){
-            for (let j = 0; j < game.length; j++){
-                game[i][j]===' '
-            }
-        }
+        this.newgame();
         this.score[0] = 0;
         this.score[1] = 0;
+        this.player = 1;
+        document.querySelector("#score > h1").textContent = this.score[0] + " - " + this.score[1];
     },
-    input: (val, posX, posY) => {
-        this.game[posY][posX] = val;
+    newgame: function () {
+        this.step = 0;
+        for (let i = 0; i < this.game.length; i++){
+            for (let j = 0; j < this.game.length; j++){
+                this.game[i][j] = '';
+                document.querySelector(".row:nth-of-type(" + (i+1) + ") > .game:nth-of-type(" + (j+1) + ")").textContent = this.game[i][j];
+            }
+        }
+    },
+    input: function (posX, posY) {
+        if (this.game[posY][posX] === '') {
+            this.game[posY][posX] = this.player === 1 ? 'X' : "O";
+            document.querySelector(".row:nth-of-type(" + (posY+1) + ") > .game:nth-of-type(" + (posX+1) + ")").textContent = this.game[posY][posX];
+            this.last[0] = posX;
+            this.last[1] = posY;
+            this.step++;
+            if (this.step > 4) {
+                this.update();
+            }
+            this.player = this.player === 1 ? 2 : 1;
+        }
+        console.log(this.game);
+        
     }
-};
-console.log(Gameboard.check());
+    };
